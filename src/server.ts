@@ -60,7 +60,7 @@ interface DriverParams {
     id: string
 }
 
-server.get<{Params: DriverParams}>("/drivers/:id", async(req, res) => {
+server.get<{Params: DriverParams}>("/drivers/id/:id", async(req, res) => {
     const id = parseInt(req.params.id);
 
     const driver = drivers.find((driver) => driver.id === id);
@@ -74,10 +74,28 @@ server.get<{Params: DriverParams}>("/drivers/:id", async(req, res) => {
     }
 });
 
+interface DriverByNameParams {
+    name: string
+}
+
+server.get<{Params: DriverByNameParams}>("/drivers/name/:name", async(req, res) => {
+    const name = req.params.name;
+
+    const driver = drivers.find((driver) => driver.name === name);
+
+    if(!driver){
+        res.type("application/json").code(404);
+        return { message: "Driver Not Found"}
+    } else {
+        res.type("application/json").code(200);
+        return { driver };
+    }
+});
+
 interface TeamsParams {
     name: string,
 }
-server.get<{Params: TeamsParams}>("/teams/:name", async(req, res) => {
+server.get<{Params: TeamsParams}>("/teams/name/:name", async(req, res) => {
     const name = req.params.name;
 
     const team = teams.find((team) => team.name === name);
@@ -112,3 +130,25 @@ server.get<{Params: TeamByIdParams}>("/teams/id/:id", async(req, res) => {
 server.listen({ port: 3333 }, () => {
   console.log("Server init");
 });
+
+
+// TO-DO
+/* Create a endpoint to search drivers by team name
+interface DriverByNameParams {
+    team: string
+}
+
+server.get<{Params: DriverByNameParams}>("/drivers/name/:name", async(req, res) => {
+    const name = req.params.name;
+
+    const driver = drivers.find((driver) => driver.name === name);
+
+    if(!driver){
+        res.type("application/json").code(404);
+        return { message: "Driver Not Found"}
+    } else {
+        res.type("application/json").code(200);
+        return { driver };
+    }
+});
+*/
