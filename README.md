@@ -20,8 +20,6 @@ npm install
 ```
 ### Running the Project
 ```bash
-Copiar
-Editar
 # Run in development
 npm run start:dev
 
@@ -55,7 +53,10 @@ npm run start:build
 ### Drivers
 - `GET /drivers` — List all drivers
 
-- `GET /drivers/:id` — Get a driver by ID
+- `GET /drivers/id/:id` — Get a driver by ID
+
+- `GET /drivers/name/:name` - Get a driver by name
+
 
 ## 🛠️ Technologies
 - Node.js
