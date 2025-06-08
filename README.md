@@ -14,7 +14,7 @@ A minimal REST API for Formula 1 teams and drivers, built using **Node.js**, **F
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/f1-minimal-api-node-ts-fastify.git
+git clone https://github.com/Gustavo-Zamai/f1-minimal-api-node-ts-fastify.git
 cd f1-minimal-api-node-ts-fastify
 npm install
 ```
